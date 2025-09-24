@@ -1,12 +1,21 @@
 #pragma once
 #include <Arduino.h>
 #include "boards.hpp"
+#include "lcd.hpp"
 
 class UART
 {
 public:
     UART()
     {
+#if defined(BOARD_PICOCALC_W) || defined(BOARD_PICOCALC_2W)
+        // Initialize LCD for PicoCalc display
+        this->lcd = new LCD();
+        if (this->lcd)
+        {
+            this->lcd->text(0, 0, "Ready...");
+        }
+#endif
     }
     size_t available();
     void begin(uint32_t baudrate);
@@ -25,11 +34,14 @@ public:
     void set_pins(uint8_t tx_pin, uint8_t rx_pin);
 #endif
 private:
-#if defined(BOARD_PICO_W) || defined(BOARD_PICO_2W)
+#if defined(BOARD_PICO_W) || defined(BOARD_PICO_2W) || defined(BOARD_PICOCALC_W) || defined(BOARD_PICOCALC_2W)
     SerialPIO *serial;
 #elif defined(BOARD_VGM)
     SerialPIO *serial;
     uint8_t rx_pin;
     uint8_t tx_pin;
+#endif
+#if defined(BOARD_PICOCALC_W) || defined(BOARD_PICOCALC_2W)
+    LCD *lcd; // LCD for PicoCalc display
 #endif
 };

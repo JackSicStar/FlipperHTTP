@@ -22,7 +22,7 @@ constexpr RGB COLOR_OFF = {0, 0, 0};
 constexpr RGB COLOR_GREEN = {0, 255, 0};
 #endif
 
-#if defined(BOARD_PICO_W) || defined(BOARD_PICO_2W) || defined(BOARD_VGM) || defined(BOARD_BW16)
+#if defined(BOARD_PICO_W) || defined(BOARD_PICO_2W) || defined(BOARD_VGM) || defined(BOARD_BW16) || defined(BOARD_PICOCALC_W) || defined(BOARD_PICOCALC_2W)
 #define LED_ON HIGH
 #define LED_OFF LOW
 #else
@@ -86,7 +86,7 @@ void LED::blink(int timeout)
     delay(timeout);
     digitalWrite(5, LED_OFF); // GREEN
     delay(timeout);
-#elif defined(BOARD_PICO_W) || defined(BOARD_PICO_2W) || defined(BOARD_VGM)
+#elif defined(BOARD_PICO_W) || defined(BOARD_PICO_2W) || defined(BOARD_VGM) || defined(BOARD_PICOCALC_W) || defined(BOARD_PICOCALC_2W)
     // turn on GREEN
     digitalWrite(LED_BUILTIN, LED_ON);
     delay(timeout);
@@ -148,7 +148,7 @@ void LED::start()
     digitalWrite(4, LED_OFF); // BLUE
     digitalWrite(6, LED_OFF); // RED
     digitalWrite(5, LED_OFF); // GREEN
-#elif defined(BOARD_PICO_W) || defined(BOARD_PICO_2W) || defined(BOARD_VGM)
+#elif defined(BOARD_PICO_W) || defined(BOARD_PICO_2W) || defined(BOARD_VGM) || defined(BOARD_PICOCALC_W) || defined(BOARD_PICOCALC_2W)
     pinMode(LED_BUILTIN, OUTPUT); // Set Green Pin mode as output
 #elif defined(BOARD_ESP32_C3)
     pinMode(8, OUTPUT); // Set Green Pin mode as output
@@ -184,7 +184,7 @@ void LED::on()
     digitalWrite(4, LED_OFF); // BLUE
     digitalWrite(6, LED_OFF); // RED
     digitalWrite(5, LED_ON);  // GREEN
-#elif defined(BOARD_PICO_W) || defined(BOARD_PICO_2W) || defined(BOARD_VGM)
+#elif defined(BOARD_PICO_W) || defined(BOARD_PICO_2W) || defined(BOARD_VGM) || defined(BOARD_PICOCALC_W) || defined(BOARD_PICOCALC_2W)
     digitalWrite(LED_BUILTIN, LED_ON); // GREEN
 #elif defined(BOARD_ESP32_C3)
     digitalWrite(8, LED_ON); // GREEN
@@ -217,7 +217,7 @@ void LED::off()
     digitalWrite(4, LED_OFF); // BLUE
     digitalWrite(5, LED_OFF); // GREEN
     digitalWrite(6, LED_OFF); // RED
-#elif defined(BOARD_PICO_W) || defined(BOARD_PICO_2W) || defined(BOARD_VGM)
+#elif defined(BOARD_PICO_W) || defined(BOARD_PICO_2W) || defined(BOARD_VGM) || defined(BOARD_PICOCALC_W) || defined(BOARD_PICOCALC_2W)
     digitalWrite(LED_BUILTIN, LED_OFF); // GREEN
 #elif defined(BOARD_ESP32_C3)
     digitalWrite(8, LED_OFF); // GREEN

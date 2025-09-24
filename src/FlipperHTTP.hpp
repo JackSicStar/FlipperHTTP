@@ -3,7 +3,7 @@ Author: JBlanked
 Github: https://github.com/jblanked/FlipperHTTP
 Info: This library is a wrapper around the HTTPClient library and is used to communicate with the FlipperZero over serial.
 Created: 2024-09-30
-Updated: 2025-05-23
+Updated: 2025-09-15
 
 Change Log:
 - 2024-09-30: Initial commit
@@ -44,6 +44,17 @@ Change Log:
 - 2025-04-30: Added support for the ESP32-C5 board
 - 2025-05-03: Added deauth support for ESP32 and BW16 boards
 - 2025-05-23: Changed from .h to .hpp file extension
+- 2025-08-19:
+    - Updated FlipperHTTP to version 2.0.1
+    - Added sendLargeMessage method to handle websocket messages bigger than 90 bytes (128 was the previous limit)
+    - Added [WIFI/STATUS] command which returns true if the device is connected to WiFi
+    - Added BOARD_PICOCALC_W and BOARD_PICOCALC_2W for PicoCalc support
+    - Added LCD class for the PicoCalc
+    - Bumped version to 2.1
+- 2025-09-15:
+    - Added getSSID() method to WiFiUtils class
+    - [WIFI/SSID] command to get the SSID of the connected network
+    - Bumped version to 2.1.1
 */
 #pragma once
 #include "certs.hpp"
@@ -58,7 +69,7 @@ Change Log:
 #include "storage.hpp"
 
 #define BAUD_RATE 115200
-#define FLIPPER_HTTP_VERSION "2.0"
+#define FLIPPER_HTTP_VERSION "2.1.1"
 
 class FlipperHTTP
 {
@@ -79,8 +90,9 @@ public:
         int headerSize = 0                    // Number of headers
     );
     //
-    bool saveWiFi(String data);                                                                                                             // Save and Load settings to and from storage
-    void setup();                                                                                                                           // Arduino setup function
+    bool saveWiFi(String data); // Save and Load settings to and from storage
+    void setup();
+    void sendLargeMessage(WebSocketClient &ws, String message);                                                                             // Arduino setup function
     bool streamBytes(const char *method, String url, String payload, const char *headerKeys[], const char *headerValues[], int headerSize); // Stream bytes from server
     bool readSerialSettings(String receivedData, bool connectAfterSave);                                                                    // Read the serial data and save the settings
     void loop();                                                                                                                            // Main loop for flipper-http.ino that handles all of the commands
@@ -96,10 +108,10 @@ private:
     LED led; // EasyLED object to control the LED
 
 #ifdef BOARD_VGM
-    UART uart;   // UART object to handle serial communication
-    UART uart_2; // UART object to handle serial communication
+    UART *uart;   // UART object to handle serial communication
+    UART *uart_2; // UART object to handle serial communication
 #else
-    UART uart; // UART object to handle serial communication
+    UART *uart; // UART object to handle serial communication
 #endif
     WiFiUtils wifi;         // WiFiUtils object to handle WiFi connections
     StorageManager storage; // StorageManager object to handle storage operations

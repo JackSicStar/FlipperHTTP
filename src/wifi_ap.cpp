@@ -111,7 +111,7 @@ void WiFiAP::run()
             }
         }
 
-#if defined(BOARD_PICO_W) || defined(BOARD_PICO_2W) || defined(BOARD_VGM)
+#if defined(BOARD_PICO_W) || defined(BOARD_PICO_2W) || defined(BOARD_VGM) || defined(BOARD_PICOCALC_W) || defined(BOARD_PICOCALC_2W)
         WiFiClient client = server.accept();
 #else
         WiFiClient client = server.available();

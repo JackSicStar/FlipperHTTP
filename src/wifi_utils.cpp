@@ -149,6 +149,15 @@ void WiFiUtils::disconnect()
 #endif
 }
 
+String WiFiUtils::getSSID()
+{
+    if (this->isConnected())
+    {
+        return WiFi.SSID();
+    }
+    return "";
+}
+
 bool WiFiUtils::isConnected()
 {
     return WiFi.status() == WL_CONNECTED;

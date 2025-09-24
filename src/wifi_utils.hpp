@@ -53,6 +53,7 @@ public:
     String connectAP(const char *ssid);                   // Connect to WiFi in AP mode and return the IP address
     String deviceIP();                                    // Get IP address of the device
     void disconnect();                                    // Disconnect from WiFi
+    String getSSID();                                     // Get the name of the connected network
     bool isConnected();                                   // Check if connected to WiFi
     String scan();                                        // Scan for available WiFi networks
 private:

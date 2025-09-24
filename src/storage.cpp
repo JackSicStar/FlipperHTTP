@@ -8,7 +8,7 @@
 
 bool StorageManager::begin()
 {
-#if defined(BOARD_PICO_W) || defined(BOARD_PICO_2W) || defined(BOARD_VGM)
+#if defined(BOARD_PICO_W) || defined(BOARD_PICO_2W) || defined(BOARD_VGM) || defined(BOARD_PICOCALC_W) || defined(BOARD_PICOCALC_2W)
     if (!LittleFS.begin())
     {
         if (LittleFS.format())
@@ -31,7 +31,7 @@ bool StorageManager::begin()
 
 bool StorageManager::deserialize(JsonDocument &doc, const char *filename)
 {
-#if defined(BOARD_PICO_W) || defined(BOARD_PICO_2W) || defined(BOARD_VGM)
+#if defined(BOARD_PICO_W) || defined(BOARD_PICO_2W) || defined(BOARD_VGM) || defined(BOARD_PICOCALC_W) || defined(BOARD_PICOCALC_2W)
     File file = LittleFS.open(filename, "r");
 #elif !defined(BOARD_BW16)
     File file = SPIFFS.open(filename, FILE_READ);
@@ -53,7 +53,7 @@ bool StorageManager::deserialize(JsonDocument &doc, const char *filename)
 
 size_t StorageManager::freeHeap()
 {
-#if defined(BOARD_PICO_W) || defined(BOARD_PICO_2W) || defined(BOARD_VGM)
+#if defined(BOARD_PICO_W) || defined(BOARD_PICO_2W) || defined(BOARD_VGM) || defined(BOARD_PICOCALC_W) || defined(BOARD_PICOCALC_2W)
     return rp2040.getFreeHeap();
 #elif defined(BOARD_BW16)
     return os_get_free_heap_size_arduino();
@@ -65,7 +65,7 @@ size_t StorageManager::freeHeap()
 String StorageManager::read(const char *filename)
 {
     String fileContent = "";
-#if defined(BOARD_PICO_W) || defined(BOARD_PICO_2W) || defined(BOARD_VGM)
+#if defined(BOARD_PICO_W) || defined(BOARD_PICO_2W) || defined(BOARD_VGM) || defined(BOARD_PICOCALC_W) || defined(BOARD_PICOCALC_2W)
     File file = LittleFS.open(filename, "r");
 #elif !defined(BOARD_BW16)
     File file = SPIFFS.open(filename, FILE_READ);
@@ -91,7 +91,7 @@ String StorageManager::read(const char *filename)
 
 bool StorageManager::serialize(JsonDocument &doc, const char *filename)
 {
-#if defined(BOARD_PICO_W) || defined(BOARD_PICO_2W) || defined(BOARD_VGM)
+#if defined(BOARD_PICO_W) || defined(BOARD_PICO_2W) || defined(BOARD_VGM) || defined(BOARD_PICOCALC_W) || defined(BOARD_PICOCALC_2W)
     File file = LittleFS.open(filename, "w");
 #elif !defined(BOARD_BW16)
     File file = SPIFFS.open(filename, FILE_WRITE);
@@ -117,7 +117,7 @@ bool StorageManager::serialize(JsonDocument &doc, const char *filename)
 
 bool StorageManager::write(const char *filename, const char *data)
 {
-#if defined(BOARD_PICO_W) || defined(BOARD_PICO_2W) || defined(BOARD_VGM)
+#if defined(BOARD_PICO_W) || defined(BOARD_PICO_2W) || defined(BOARD_VGM) || defined(BOARD_PICOCALC_W) || defined(BOARD_PICOCALC_2W)
     File file = LittleFS.open(filename, "w");
 #elif !defined(BOARD_BW16)
     File file = SPIFFS.open(filename, FILE_WRITE);

@@ -1,6 +1,6 @@
 #pragma once
 #include "boards.hpp"
-#if defined(BOARD_PICO_W) || defined(BOARD_PICO_2W) || defined(BOARD_VGM)
+#if defined(BOARD_PICO_W) || defined(BOARD_PICO_2W) || defined(BOARD_VGM) || defined(BOARD_PICOCALC_W) || defined(BOARD_PICOCALC_2W)
 #include <LittleFS.h>
 #elif defined(BOARD_BW16)
 #include <FlashStorage_RTL8720.h> // https://github.com/khoih-prog/FlashStorage_RTL8720

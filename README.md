@@ -10,21 +10,24 @@ Star the repository and [follow me](https://www.github.com/jblanked) to stay upd
 - Other: https://www.jblanked.com/social/
 
 ## Video Tutorials
-- Flashing FlipperHTTP: https://www.youtube.com/watch?v=CoyFrUzKHhI
+- Flashing FlipperHTTP (ESP Terminator): https://www.youtube.com/watch?v=d7ND0tIyBko
+- Flashing FlipperHTTP (ESP Flasher): https://www.youtube.com/watch?v=CoyFrUzKHhI
+- Flashing + Quick Review: https://www.youtube.com/watch?v=ZFYki5xaCBU
 - Talking Sasquatch (Review): https://www.youtube.com/watch?v=jYZkdz664Tg 
 - Using FlipperHTTP apps: https://www.youtube.com/watch?v=xR1ZbpOVTwE
 
 ## Apps That Utilize FlipperHTTP
 The following apps integrate FlipperHTTP to enhance their functionality:
 
-- **FlipWorld** - An open-world multiplayer game: [https://github.com/jblanked/FlipWorld](https://github.com/jblanked/FlipWorld)
-- **FlipStore** - A marketplace for downloading and managing apps and software on your Flipper Zero: [https://github.com/jblanked/FlipStore](https://github.com/jblanked/FlipStore)
+- **Free Roam** - An open-world 3D multiplayer game: [https://github.com/jblanked/Free-Roam](https://github.com/jblanked/Free-Roam)
 - **FlipSocial** - A social media platform for the Flipper Zero: [https://github.com/jblanked/FlipSocial](https://github.com/jblanked/FlipSocial)
+- **FlipWiFi** - A FlipperHTTP companion app for scanning and saving WiFi networks on your Flipper Zero: [https://github.com/jblanked/FlipWiFi](https://github.com/jblanked/FlipWiFi)
+- **FlipWorld** - An open-world 2D multiplayer game: [https://github.com/jblanked/FlipWorld](https://github.com/jblanked/FlipWorld)
+- **FlipDownloader** - A marketplace for downloading and managing apps and software on your Flipper Zero: [https://github.com/jblanked/FlipDownloader](https://github.com/jblanked/FlipDownloader)
 - **FlipLibrary** - A Flipper Zero app with a dictionary, random facts, and more: [https://github.com/jblanked/FlipLibrary](https://github.com/jblanked/FlipLibrary)
 - **Web Crawler** - Allows your Flipper Zero to crawl and interact with websites directly: [https://github.com/jblanked/WebCrawler-FlipperZero](https://github.com/jblanked/WebCrawler-FlipperZero)
 - **FlipWeather** - Uses WiFi to fetch GPS and weather information on your Flipper Zero: [https://github.com/jblanked/FlipWeather](https://github.com/jblanked/FlipWeather)
 - **FlipTrader** - Uses WiFi to fetch stock and currency pair prices on your Flipper Zero: [https://github.com/jblanked/FlipTrader](https://github.com/jblanked/FlipTrader)
-- **FlipWiFi** - A FlipperHTTP companion app for scanning and saving WiFi networks on your Flipper Zero: [https://github.com/jblanked/FlipWiFi](https://github.com/jblanked/FlipWiFi)
 
 All applications are available for download at the following link: https://www.jblanked.com/flipper/download/ (or by clicking on the repository link above).
 
@@ -62,6 +65,11 @@ WiFi Developer Board -> Flipper
 - RX (Pin 13) -> Pin 13 (TX)
 - 3v3 (Pin 9) -> 3v3
 - GND (Pin 11) -> GND
+
+PicoCalc -> Flipper
+- TX (GPIO 4 - Pin 6) -> Pin 14 (RX)
+- RX (GPIO 5 - Pin 7) -> Pin 13 (TX)
+- GND -> Pin 11 (GND)
 
 ESP32 -> Flipper
 - TX -> Pin 14 (RX)
